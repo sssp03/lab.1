@@ -36,6 +36,5 @@ directory = "/content/drive/My Drive/lab 1 ps"
 file_name = "emg_neuropathy"
 file_path = os.path.join(directory, file_name)
 ```
-Esta parte del código permite que Google Colab acceda a Google Drive y busque el archivo con el nombre que le asignaste previamente al subirlo.
-
+Esta parte del código permite que Google Colab acceda a Google Drive y busque el archivo con el nombre que le asignaste previamente al subirlo,despues de esto se va cargar la señal biomedica 
 
