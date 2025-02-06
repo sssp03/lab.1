@@ -1,9 +1,11 @@
 # LABORATORIO 1
-Como primer paso para la realización de la guía, descargamos desde PhysioNet una señal de EMG, obteniendo los archivos en formato `.dat` y `.hea`. Posteriormente, utilizamos Python para poder calcular lo solicitado y las graficas respectivas , empleando el compilador de Google Colab.  
+Como primer paso para la realización de la guía, descargamos desde PhysioNet una señal de EMG, obteniendo los archivos en formato `.dat` y `.hea`. Posteriormente, utilizamos Python para calcular lo solicitado y generar las gráficas correspondientes, empleando el compilador de Google Colab.  
 
-En este entorno, redactamos el código necesario para visualizar los datos estadísticos, siguiendo las indicaciones de la guía. Estas requerían que la representación se realizara de dos maneras diferentes: primero, implementando las fórmulas desde cero y, luego, utilizando las funciones predefinidas de Python.  
+En este entorno, redactamos el código necesario para visualizar los datos estadísticos, siguiendo las indicaciones de la guía. Se requería que la representación de los datos se realizara de dos maneras diferentes: primero, implementando las fórmulas desde cero, y luego, utilizando las funciones predefinidas de Python.  
 
-Con esta base, procedimos a calcular los siguientes estadísticos de la señal: media, desviación estándar, coeficiente de variación, histogramas y función de probabilidad. Para realizar estos cálculos, desarrollamos la programación correspondiente en Python, la cual explicaremos a continuación.
+Con esta base, procedimos a calcular los siguientes estadísticos de la señal: media, desviación estándar, coeficiente de variación, histogramas y función de probabilidad. Después de completar esta parte, nos enfocamos en investigar la relación señal-ruido (SNR), ya que era necesario contaminar la señal con ruido gaussiano, impulsivo y tipo artefacto, para luego medir el SNR de cada uno.  
+
+Para llevar a cabo todo esto, desarrollamos la programación correspondiente en Python, la cual explicaremos a continuación.
 # EXPLICACION DEL CODIGO USADO 
 Lo primero que debemos hacer es importar las librerías necesarias, ya que estas son fundamentales para el correcto funcionamiento de nuestro código.
 ```python
