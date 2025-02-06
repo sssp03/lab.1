@@ -30,3 +30,12 @@ Luego, importamos las siguientes librerías necesarias para el análisis y proce
 - `from scipy.stats import norm`: Facilita el cálculo y representación de la campana de Gauss.  
 - `from google.colab import drive`: Se emplea para conectar Google Drive con Google Colab, ya que nuestros archivos habían sido subidos previamente a Drive.
 
+Despues de esto se utlizo `drive.mount('/content/drive')` que este permite acceder a los archivos que tenemos almacenados en Drive.
+```python
+directory = "/content/drive/My Drive/lab 1 ps"
+file_name = "emg_neuropathy"
+file_path = os.path.join(directory, file_name)
+```
+Esta parte del código permite que Google Colab acceda a Google Drive y busque el archivo con el nombre que le asignaste previamente al subirlo.
+
+
