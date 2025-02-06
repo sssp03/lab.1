@@ -86,6 +86,7 @@ def calcular_coef_var_manual(desviacion, media):
 - `calcular_media_manual(signal)`:Esto permite calcula la media (promedio) de la señal,La variable suma acumula todos los valores de esta.Luego, se divide la suma total entre el número de elementos de la señal (len(signal)) para obtener la media.
 - `calcular_desviacion_manual(signal, media)`: Por medio de esta función se calcula la desviación estándar de la señal,primero se calcula la diferencia al cuadrado de cada valor de la señal con respecto a la media,luego se suman esos valores y se divide entre el número total de elementos de la señal y finalmente se toma la raíz cuadrada del resultado para obtener la desviación estándar.
 - `calcular_coef_var_manual(desviacion, media)`:Esto va calcular el coeficiente de variación, que es la relación entre la desviación estándar y la media, multiplicada por 100 para expresarlo en porcentaje, si la media es distinta de cero, se realiza el cálculo. En caso contrario, se retorna 0, evitando la división por cero.
+  
 Como en la guía también se solicitaba calcular los datos anteriores utilizando las funciones predefinidas de Python, se optó por hacer uso de las funciones de **NumPy** de manera más eficiente y compacta. Esto permitió realizar los cálculos de la media, la desviación estándar y el coeficiente de variación de forma rápida, aprovechando las optimizaciones de la librería sin tener que implementar las fórmulas manualmente.
 ```python
 media_numpy = np.mean(signal)
