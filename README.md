@@ -147,21 +147,23 @@ plt.show()
 - `norm.pdf():` Calcula la función de densidad de probabilidad (PDF) de una distribución normal ya que esta función toma como entrada el rango de valores (de x), y la media y desviación estándar de los datos. Devuelve los valores correspondientes a la altura de la campana en esos puntos.
 - `plt.plot():` Dibuja la campana de Gauss sobre el gráfico, usando los valores de x y pdf calculados previamente. Esta función conecta los puntos con una curva continua.
 
-11 
-    ``` python
-    def calcular_snr(original, ruidosa):
-    potencia_original = np.mean(original ** 2)
-    potencia_ruido = np.mean((original - ruidosa) ** 2)
-    return 10 * np.log10(potencia_original / potencia_ruido)
-    ```
-Paso 11: Cálculo de la Relación Señal-Ruido (SNR)
-Descripción:
+
+La mayor parte de los datos están agrupados alrededor de 0 mV, con una clara tendencia a disminuir hacia los extremos.
+Se puede predecir que distribución es aproximadamente simétrica, pero parece presentar colas más largas en comparación con la curva gaussiana.
+
+La campana roja representa una distribución normal y se observa que la curva sigue el patrón general del histograma, pero no ajusta perfectamente en los extremos, lo que puede indicar que la distribución de la señal tiene una mayor dispersión o valores atípicos.Para que se presenten estas dispersiones puede ser porque los datos provienen de un sistema físico y pueden presentar ruidos.
+
 Este paso calcula la Relación Señal-Ruido (SNR), que mide la calidad de la señal al comparar la potencia de la señal útil con la potencia del ruido añadido. Un SNR más alto indica que la señal es más clara en comparación con el ruido.
 
-Función utilizada:
+``` python
+def calcular_snr(original, ruidosa):
+potencia_original = np.mean(original ** 2)
+potencia_ruido = np.mean((original - ruidosa) ** 2)
+return 10 * np.log10(potencia_original / potencia_ruido)
+```
 
-np.mean():Calcula el valor promedio de un arreglo. Se usa aquí para calcular la potencia de la señal y el ruido, que es el promedio del cuadrado de los valores.
-10 * np.log10():Esta fórmula convierte la relación de potencias en decibelios (dB), lo cual es una escala logarítmica común para medir el SNR.
+- np.mean():Calcula el valor promedio de un arreglo. Se usa aquí para calcular la potencia de la señal y el ruido, que es el promedio del cuadrado de los valores.
+- 10 * np.log10():Esta fórmula convierte la relación de potencias en decibelios (dB), lo cual es una escala logarítmica común para medir el SNR.
 
 En esta sección del código se añade el ruido solicitado a la señal
 
