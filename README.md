@@ -37,10 +37,33 @@ file_name = "emg_neuropathy"
 file_path = os.path.join(directory, file_name)
 ```
 Esta parte del código permite que Google Colab acceda a Google Drive y busque el archivo con el nombre que le asignaste previamente al subirlo.Después de esto, se carga la señal biomédica utilizando el siguiente comando de Python: 
--`record = wfdb.rdrecord(file_path)':
+```python
+record = wfdb.rdrecord(file_path)
 fs = record.fs  # Frecuencia de muestreo
 signal = record.p_signal[:, 0] * 1000  # Convertir a mV
 time = np.arange(len(signal)) / fs  # Eje de tiempo
-record = wfdb.rdrecord(file_path): Este comando se utiliza para leer un archivo de señal biomédica desde PhysioNet. El parámetro file_path corresponde a la ruta del archivo que en nuestro caso era de Drive. El resultado, record, va contener toda la información sobre la señal, como los datos de la señal, la frecuencia de muestreo, y más.
-fs = record.fs:
-Aquí, record.fs obtiene la frecuencia de muestreo de la señal, es decir, cuántos puntos de datos se capturan por segundo. Esta información es esencial para procesar correctamente la señal, ya que nos permite convertir los índices de los datos en unidades de tiempo.
+```
+- `record = wfdb.rdrecord(file_path)`: Este comando se utiliza para leer un archivo de señal biomédica desde PhysioNet. El parámetro file_path corresponde a la ruta del archivo que en nuestro caso era de Drive. El resultado, record, va contener toda la información sobre la señal, como los datos de la señal, la frecuencia de muestreo, y más.
+- `fs = record.fs`: Aquí, record.fs obtiene la frecuencia de muestreo de la señal, es decir, cuántos puntos de datos se capturan por segundo. Esta información es importante ya que convierte los índices de los datos en unidad de tiempo.
+- `signal = record.p_signal[:, 0] * 1000`: record.p_signal es un array que contiene las señales en bruto.,El [:, 0] selecciona todos los valores de la primera columna (ya que los archivos pueden contener más de una señal) y despues multiplicamos por 1000 (* 1000) para convertir la señal a milivoltios (mV), si la señal original está en voltios (V).
+- `time = np.arange(len(signal)) / fs`: Esta linea crea el eje de tiempo para la señal, np.arange(len(signal)) genera números enteros desde 0 hasta el número de muestras en la señal (len(signal)).Luego, lo dividimos por la frecuencia de muestreo fs para convertir esos índices en tiempo (en segundos). Esto nos da el tiempo correspondiente a cada punto de la señal, lo que nos permitirá graficar la señal frente al tiempo de manera adecuada.
+Despues de esto se va a graficar la señal fisiologica orginal permitiendo visualizar de manera clara, para esto se va necesitar las siguientes lineas de codigo:
+```python
+plt.figure(figsize=(10, 4))
+plt.plot(time, signal, label="Señal Original")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Amplitud (mV)")
+plt.title("Señal Biomédica")
+plt.legend()
+plt.grid()
+plt.show()
+```
+- `plt.figure(figsize=(10, 4))`:Crea una nueva figura para el gráfico, con un tamaño de 10x4 pulgadas. Esto ayuda a ajustar la visualización del gráfico a un tamaño adecuado.
+- `plt.plot(time, signal, label="Señal Original")`:Dibuja la señal en el gráfico, utilizando el eje de tiempo time y los valores de la señal signal. El parámetro label="Señal Original" sirve para asignar un nombre a la línea que se mostrará en la leyenda del gráfico.
+- `plt.xlabel("Tiempo (s)")`:Establece la etiqueta del eje x (horizontal), en nuestro caso el tiempo en segundos.
+- `plt.ylabel("Amplitud (mV)")`:Establece la etiqueta del eje y (vertical), indicando que el eje representa la amplitud de la señal en milivoltios (mV).
+- plt.title("Señal Biomédica")`: Esyte comando nos permite asignarle el nombre a nuestra grafica.
+- `plt.legend()`:Muestra la leyenda del gráfico, que en este caso incluirá la etiqueta "Señal Original" para identificar la línea que representa la señal.
+- `plt.grid()`: Esto Añade una cuadrícula al gráfico para facilitar la visualización de los valores.
+- `plt.show()`: Nos va a mostrar la grafica en la interfaz o pantalla.
+  
