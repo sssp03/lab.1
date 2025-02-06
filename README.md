@@ -208,6 +208,24 @@ plt.show()
 
   ![image](https://github.com/user-attachments/assets/c24cb84e-b35c-488a-a5f8-e8cff499bd09)
 
+1. ` Señal con Ruido Gaussiano (Arriba - Rojo)`:
+Se trata de un ruido que sigue una distribución normal, con valores distribuidos simétricamente alrededor de una media.
+Presenta variabilidad constante, sin picos extremos inusuales.
+La señal parece cambiar en ciertas regiones, lo que sugiere que en algunas partes el nivel de ruido aumenta o se modula.
+El ruido gaussiano es común en muchos sistemas físicos y electrónicos, como sensores o circuitos de comunicación.
+2. ` Señal con Ruido de Impulso (Abajo - Verde)`:
+Este tipo de ruido se caracteriza por picos aislados de alta amplitud.
+A diferencia del ruido gaussiano, aquí se pueden ver impulsos que sobresalen drásticamente del resto de la señal.
+La mayor parte de los valores se mantienen en una banda estable, pero con eventos de alta energía.
+Este ruido es típico en interferencias de comunicación, errores en la transmisión de datos o fallos en componentes electrónicos.
+3. ` Características del Ruido de Artefacto (Morada)`:
+Se observa una modulación en el ruido, con regiones donde la amplitud es mayor.
+A diferencia del ruido gaussiano o de impulso, aquí los picos parecen tener cierta periodicidad o repetirse en ciertas secciones.
+Este tipo de ruido puede ser causado por:
+Interferencias eléctricas en el sistema de adquisición.
+Problemas en los sensores o cables (como mal contacto o inducción electromagnética).
+Errores en la digitalización de la señal, introducidos por el hardware de muestreo.
+
 - plt.subplots(): Crea múltiples subgráficos (subplots) dentro de una misma figura. En este caso, se crean tres gráficos para mostrar las señales con ruido gaussiano, ruido de impulso y ruido de artefacto en diferentes colores.
 
 - plt.tight_layout():Ajusta el espaciado entre los gráficos para que no se solapen.
