@@ -201,6 +201,7 @@ axs[2].plot(time, senal_artefacto, label="Ruido de Artefacto", color='purple')
 plt.tight_layout()
 plt.show()
 ```
+
   ![image](https://github.com/user-attachments/assets/c24cb84e-b35c-488a-a5f8-e8cff499bd09)
   
   ![image](https://github.com/user-attachments/assets/c8e8fced-9b45-46b3-85f2-de3e8dde04c6)
