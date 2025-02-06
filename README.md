@@ -47,7 +47,7 @@ time = np.arange(len(signal)) / fs  # Eje de tiempo
 - `fs = record.fs`: Aquí, record.fs obtiene la frecuencia de muestreo de la señal, es decir, cuántos puntos de datos se capturan por segundo. Esta información es importante ya que convierte los índices de los datos en unidad de tiempo.
 - `signal = record.p_signal[:, 0] * 1000`: record.p_signal es un array que contiene las señales en bruto.,El [:, 0] selecciona todos los valores de la primera columna (ya que los archivos pueden contener más de una señal) y despues multiplicamos por 1000 (* 1000) para convertir la señal a milivoltios (mV), si la señal original está en voltios (V).
 - `time = np.arange(len(signal)) / fs`: Esta linea crea el eje de tiempo para la señal, np.arange(len(signal)) genera números enteros desde 0 hasta el número de muestras en la señal (len(signal)).Luego, lo dividimos por la frecuencia de muestreo fs para convertir esos índices en tiempo (en segundos). Esto nos da el tiempo correspondiente a cada punto de la señal, lo que nos permitirá graficar la señal frente al tiempo de manera adecuada.
-Despues de esto se va a graficar la señal fisiologica orginal permitiendo visualizar de manera clara, para esto se va necesitar las siguientes lineas de codigo:
+Despues de esto se va a graficar la señal fisiologica orginalmediante matplotlib permitiendo visualizar de manera clara, para esto se va necesitar las siguientes lineas de codigo:
 ```python
 plt.figure(figsize=(10, 4))
 plt.plot(time, signal, label="Señal Original")
@@ -58,6 +58,7 @@ plt.legend()
 plt.grid()
 plt.show()
 ```
+
 - `plt.figure(figsize=(10, 4))`:Crea una nueva figura para el gráfico, con un tamaño de 10x4 pulgadas. Esto ayuda a ajustar la visualización del gráfico a un tamaño adecuado.
 - `plt.plot(time, signal, label="Señal Original")`:Dibuja la señal en el gráfico, utilizando el eje de tiempo time y los valores de la señal signal. El parámetro label="Señal Original" sirve para asignar un nombre a la línea que se mostrará en la leyenda del gráfico.
 - `plt.xlabel("Tiempo (s)")`:Establece la etiqueta del eje x (horizontal), en nuestro caso el tiempo en segundos.
@@ -66,4 +67,24 @@ plt.show()
 - `plt.legend()`:Muestra la leyenda del gráfico, que en este caso incluirá la etiqueta "Señal Original" para identificar la línea que representa la señal.
 - `plt.grid()`: Esto Añade una cuadrícula al gráfico para facilitar la visualización de los valores.
 - `plt.show()`: Nos va a mostrar la grafica en la interfaz o pantalla.
-  
+Posteriormente, se va a calcular los datos estadisticos manualmente que son la media, desviaciòn estandar y coeficiente de variaciòn, para esto se utilizo el siguiente codigo:
+```python
+def calcular_media_manual(signal):
+    suma = 0
+    for x in signal:
+        suma += x
+    return suma / len(signal)
+
+def calcular_desviacion_manual(signal, media):
+    return (sum((x - media) ** 2 for x in signal) / len(signal)) ** 0.5
+
+def calcular_coef_var_manual(desviacion, media):
+    return (desviacion / media) * 100 if media != 0 else 0
+```
+- `calcular_media_manual(signal)`:Esta función calcula la media (promedio) de la señal,La variable suma acumula todos los valores de esta.Luego, se divide la suma total entre el número de elementos de la señal (len(signal)) para obtener la media.
+- `calcular_desviacion_manual(signal, media)`:Esta función calcula la desviación estándar de la señal.
+
+Primero, se calcula la diferencia al cuadrado de cada valor de la señal con respecto a la media.
+Luego, se suman esos valores y se divide entre el número total de elementos de la señal.
+Finalmente, se toma la raíz cuadrada del resultado para obtener la desviación estándar.
+
