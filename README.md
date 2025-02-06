@@ -202,7 +202,9 @@ plt.tight_layout()
 plt.show()
 ```
   ![image](https://github.com/user-attachments/assets/c24cb84e-b35c-488a-a5f8-e8cff499bd09)
+  
   ![image](https://github.com/user-attachments/assets/c8e8fced-9b45-46b3-85f2-de3e8dde04c6)
+  
   ![image](https://github.com/user-attachments/assets/53bc4814-f939-4fd5-b391-49d037b303ca)
 
 - plt.subplots(): Crea múltiples subgráficos (subplots) dentro de una misma figura. En este caso, se crean tres gráficos para mostrar las señales con ruido gaussiano, ruido de impulso y ruido de artefacto en diferentes colores.
