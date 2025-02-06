@@ -228,14 +228,15 @@ Interferencias eléctricas en el sistema de adquisición.
 Problemas en los sensores o cables (como mal contacto o inducción electromagnética).
 Errores en la digitalización de la señal, introducidos por el hardware de muestreo.
 
+- plt.subplots(): Crea múltiples subgráficos (subplots) dentro de una misma figura. En este caso, se crean tres gráficos para mostrar las señales con ruido gaussiano, ruido de impulso y ruido de artefacto en diferentes colores.
+
+- plt.tight_layout():Ajusta el espaciado entre los gráficos para que no se solapen.
 # BIBLIOGRAFIA
 1.)Kimura J. Electrodiagnosis in Diseases of Nerve and Muscle: Principles and Practice, 3rd Edition. New York, Oxford University Press, 2001.
 2.)Reaz MBI, Hussain MS and Mohd-Yasin F. Techniques of EMG signal analysis: detection, processing, classification and applications. Biol. Proced. Online 2006; 8(1): 11-35.
 3.)Google Colab.
 4.)Python.
-- plt.subplots(): Crea múltiples subgráficos (subplots) dentro de una misma figura. En este caso, se crean tres gráficos para mostrar las señales con ruido gaussiano, ruido de impulso y ruido de artefacto en diferentes colores.
 
-- plt.tight_layout():Ajusta el espaciado entre los gráficos para que no se solapen.
 
  
 
