@@ -36,5 +36,12 @@ directory = "/content/drive/My Drive/lab 1 ps"
 file_name = "emg_neuropathy"
 file_path = os.path.join(directory, file_name)
 ```
-Esta parte del código permite que Google Colab acceda a Google Drive y busque el archivo con el nombre que le asignaste previamente al subirlo,despues de esto se va cargar la señal biomedica 
+Esta parte del código permite que Google Colab acceda a Google Drive y busque el archivo con el nombre que le asignaste previamente al subirlo.Después de esto, se carga la señal biomédica utilizando el siguiente comando de Python: 
+```python
+record = wfdb.rdrecord(file_path)
+fs = record.fs  # Frecuencia de muestreo
+signal = record.p_signal[:, 0] * 1000  # Convertir a mV
+time = np.arange(len(signal)) / fs  # Eje de tiempo
+```
+record = wfdb.rdrecord(file_path): Este comando se utiliza para leer un archivo de señal biomédica desde PhysioNet. El parámetro file_path corresponde a la ruta del archivo que en nuestro caso era de Drive. El resultado, record, va contener toda la información sobre la señal, como los datos de la señal, la frecuencia de muestreo, y más.
 
