@@ -47,7 +47,8 @@ time = np.arange(len(signal)) / fs  # Eje de tiempo
 - `fs = record.fs`: Aquí, record.fs obtiene la frecuencia de muestreo de la señal, es decir, cuántos puntos de datos se capturan por segundo. Esta información es importante ya que convierte los índices de los datos en unidad de tiempo.
 - `signal = record.p_signal[:, 0] * 1000`: record.p_signal es un array que contiene las señales en bruto.,El [:, 0] selecciona todos los valores de la primera columna (ya que los archivos pueden contener más de una señal) y despues multiplicamos por 1000 (* 1000) para convertir la señal a milivoltios (mV), si la señal original está en voltios (V).
 - `time = np.arange(len(signal)) / fs`: Esta linea crea el eje de tiempo para la señal, np.arange(len(signal)) genera números enteros desde 0 hasta el número de muestras en la señal (len(signal)).Luego, lo dividimos por la frecuencia de muestreo fs para convertir esos índices en tiempo (en segundos). Esto nos da el tiempo correspondiente a cada punto de la señal, lo que nos permitirá graficar la señal frente al tiempo de manera adecuada.
-Despues de esto se va a graficar la señal fisiologica orginalmediante matplotlib permitiendo visualizar de manera clara, para esto se va necesitar las siguientes lineas de codigo:
+
+Despues de esto se va a graficar la señal fisiologica orginal mediante matplotlib permitiendo visualizar de manera clara, para esto se va necesitar las siguientes lineas de codigo:
 ```python
 plt.figure(figsize=(10, 4))
 plt.plot(time, signal, label="Señal Original")
@@ -58,6 +59,7 @@ plt.legend()
 plt.grid()
 plt.show()
 ```
+![image](https://github.com/user-attachments/assets/84cb0797-a76c-443a-9757-1163c8d334b9)
 
 - `plt.figure(figsize=(10, 4))`:Crea una nueva figura para el gráfico, con un tamaño de 10x4 pulgadas. Esto ayuda a ajustar la visualización del gráfico a un tamaño adecuado.
 - `plt.plot(time, signal, label="Señal Original")`:Dibuja la señal en el gráfico, utilizando el eje de tiempo time y los valores de la señal signal. El parámetro label="Señal Original" sirve para asignar un nombre a la línea que se mostrará en la leyenda del gráfico.
@@ -81,10 +83,12 @@ def calcular_desviacion_manual(signal, media):
 def calcular_coef_var_manual(desviacion, media):
     return (desviacion / media) * 100 if media != 0 else 0
 ```
-- `calcular_media_manual(signal)`:Esta función calcula la media (promedio) de la señal,La variable suma acumula todos los valores de esta.Luego, se divide la suma total entre el número de elementos de la señal (len(signal)) para obtener la media.
-- `calcular_desviacion_manual(signal, media)`:Esta función calcula la desviación estándar de la señal.
-
-Primero, se calcula la diferencia al cuadrado de cada valor de la señal con respecto a la media.
-Luego, se suman esos valores y se divide entre el número total de elementos de la señal.
-Finalmente, se toma la raíz cuadrada del resultado para obtener la desviación estándar.
-
+- `calcular_media_manual(signal)`:Esto permite calcula la media (promedio) de la señal,La variable suma acumula todos los valores de esta.Luego, se divide la suma total entre el número de elementos de la señal (len(signal)) para obtener la media.
+- `calcular_desviacion_manual(signal, media)`: Por medio de esta función se calcula la desviación estándar de la señal,primero se calcula la diferencia al cuadrado de cada valor de la señal con respecto a la media,luego se suman esos valores y se divide entre el número total de elementos de la señal y finalmente se toma la raíz cuadrada del resultado para obtener la desviación estándar.
+- `calcular_coef_var_manual(desviacion, media)`:Esto va calcular el coeficiente de variación, que es la relación entre la desviación estándar y la media, multiplicada por 100 para expresarlo en porcentaje, si la media es distinta de cero, se realiza el cálculo. En caso contrario, se retorna 0, evitando la división por cero.
+Como en la guía también se solicitaba calcular los datos anteriores utilizando las funciones predefinidas de Python, se optó por hacer uso de las funciones de **NumPy** de manera más eficiente y compacta. Esto permitió realizar los cálculos de la media, la desviación estándar y el coeficiente de variación de forma rápida, aprovechando las optimizaciones de la librería sin tener que implementar las fórmulas manualmente.
+```python
+media_numpy = np.mean(signal)
+desviacion_numpy = np.std(signal)
+coef_var_numpy = (desviacion_numpy / media_numpy) * 100
+```
