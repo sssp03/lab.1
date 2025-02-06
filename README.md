@@ -95,3 +95,54 @@ media_numpy = np.mean(signal)
 desviacion_numpy = np.std(signal)
 coef_var_numpy = (desviacion_numpy / media_numpy) * 100
 ```
+
+En esta parte del código se empieza a graficar el histograma de la señal
+``` python
+plt.figure(figsize=(10, 4))
+plt.hist(signal, bins=30, alpha=0.7, color='blue', edgecolor='black')
+plt.title('Histograma de la Señal')
+plt.xlabel('Amplitud (mV)')
+plt.ylabel('Frecuencia')
+plt.grid(True)
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/9dbf861a-6087-424d-a60a-5dc88a6eab7b)
+
+donde se elige el tamaño de la gráfica, se nombran sus respectivos ejes, se da el color y lo más importante se establece el parámetro de los intervalos del histograma, es decir, la cantidad de barras, que fueron específicamente 30 para obtener una representación clara de la distribución sin perder demasiada información. 
+
+Luego se procede a graficar la función de densidad de probabilidad (estimación)
+``` python
+plt.figure(figsize=(10, 4))
+plt.hist(signal, bins=30, density=True, alpha=0.6, color='g', edgecolor='black')
+plt.title('Función de Probabilidad (Densidad de la Señal)')
+plt.xlabel('Amplitud (mV)')
+plt.ylabel('Probabilidad')
+plt.grid(True)
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/b7d3fc0e-84f4-488a-a1ea-965c0691799b)
+
+Se hace prácticamente lo del paso anterior, pero con la diferencia de que, en lugar de mostrar la frecuencia, se muestra la probabilidad (densidad de la señal) con la función específica “density”
+
+Continuamos con la representación de la campana de Gauss
+``` python
+plt.figure(figsize=(10, 5))
+plt.hist(signal, bins=30, density=True, alpha=0.6, color='b', edgecolor='black', label="Histograma de la señal")
+x = np.linspace(min(signal), max(signal), 100)
+pdf = norm.pdf(x, media_numpy, desviacion_numpy)
+plt.plot(x, pdf, 'r-', linewidth=2, label="Campana de Gauss")
+plt.title("Distribución de la Señal con Campana de Gauss")
+plt.xlabel("Amplitud (mV)")
+plt.ylabel("Densidad de Probabilidad")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/448be64d-07fb-4248-a821-073696cd17b6)
+- np.linspace(): Genera una secuencia de números igualmente espaciados entre un valor mínimo y máximo. En este caso, genera 100 valores que cubren el rango de amplitudes de la señal para evaluar la campana de Gauss.
+- norm.pdf(): Calcula la función de densidad de probabilidad (PDF) de una distribución normal ya que esta función toma como entrada el rango de valores (de x), y la media y desviación estándar de los datos. Devuelve los valores correspondientes a la altura de la campana en esos puntos.
+- plt.plot(): Dibuja la campana de Gauss sobre el gráfico, usando los valores de x y pdf calculados previamente. Esta función conecta los puntos con una curva continua.
+  
+
+ 
+
