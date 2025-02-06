@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 from scipy.stats import norm  # Para la función de distribución normal
 from google.colab import drive
 ```
-Lo primero es instalar la librería `wfdb` utilizando el siguiente comando:  
+En el compilador que estamos utilizando, cada vez que vayamos a ejecutar el código, es necesario instalar la librería `wfdb` utilizando el siguiente comando:
 
 ```python
 !pip install wfdb
@@ -37,11 +37,10 @@ file_name = "emg_neuropathy"
 file_path = os.path.join(directory, file_name)
 ```
 Esta parte del código permite que Google Colab acceda a Google Drive y busque el archivo con el nombre que le asignaste previamente al subirlo.Después de esto, se carga la señal biomédica utilizando el siguiente comando de Python: 
-```python
-record = wfdb.rdrecord(file_path)
+-`record = wfdb.rdrecord(file_path)':
 fs = record.fs  # Frecuencia de muestreo
 signal = record.p_signal[:, 0] * 1000  # Convertir a mV
 time = np.arange(len(signal)) / fs  # Eje de tiempo
-```
 record = wfdb.rdrecord(file_path): Este comando se utiliza para leer un archivo de señal biomédica desde PhysioNet. El parámetro file_path corresponde a la ruta del archivo que en nuestro caso era de Drive. El resultado, record, va contener toda la información sobre la señal, como los datos de la señal, la frecuencia de muestreo, y más.
-
+fs = record.fs:
+Aquí, record.fs obtiene la frecuencia de muestreo de la señal, es decir, cuántos puntos de datos se capturan por segundo. Esta información es esencial para procesar correctamente la señal, ya que nos permite convertir los índices de los datos en unidades de tiempo.
