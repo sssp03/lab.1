@@ -3,9 +3,13 @@ Para comenzar con la elaboración de la guía, descargamos una señal de EMG des
 
 En este entorno, redactamos el código necesario para visualizar los datos estadísticos, siguiendo las indicaciones de la guía. Se requería que la representación de los datos se realizara de dos maneras diferentes: primero, implementando las fórmulas desde cero, y luego, utilizando las funciones predefinidas de Python.  
 
-Con esta base, procedimos a calcular los siguientes estadísticos de la señal: media, desviación estándar, coeficiente de variación, histogramas y función de probabilidad. Después de completar esta parte, nos enfocamos en investigar la relación señal-ruido (SNR), ya que era necesario contaminar la señal con ruido gaussiano, impulsivo y tipo artefacto, para luego medir el SNR de cada uno.  
+Partimos de esta base para calcular diversos estadísticos de la señal, como la media, la desviación estándar, el coeficiente de variación, los histogramas y la función de probabilidad. Una vez completados estos análisis, nos centramos en explorar la relación señal-ruido (SNR). El SNR, o *Signal-to-Noise Ratio* (relación señal-ruido en inglés), es una medida que nos permite evaluar la calidad de una señal en comparación con el ruido presente. Nos indica cuánta de la señal útil (la que deseamos analizar o transmitir) se mantiene frente a la interferencia del ruido no deseado.
 
-Para llevar a cabo todo esto, desarrollamos la programación correspondiente en Python, la cual explicaremos a continuación.
+Este valor se calcula comparando la potencia de la señal con la potencia del ruido y se expresa en decibeles (dB). Cuanto mayor es el SNR, mejor es la calidad de la señal en relación con el ruido. Un SNR elevado significa que la señal es significativamente más fuerte que el ruido, mientras que un SNR bajo indica que el ruido es similar o incluso superior a la señal.
+
+Para estudiar esta relación, fue necesario contaminar la señal con distintos tipos de ruido: gaussiano, impulsivo y tipo artefacto, para luego medir el SNR en cada caso.
+
+Todo este proceso se llevó a cabo mediante un programa desarrollado en Python, cuya implementación detallaremos a continuación.
 # EXPLICACION DEL CODIGO USADO 
 Lo primero que debemos hacer es importar las librerías necesarias, ya que estas son fundamentales para el correcto funcionamiento de nuestro código.
 ```python
