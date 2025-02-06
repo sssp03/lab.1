@@ -139,10 +139,75 @@ plt.grid(True)
 plt.show()
 ```
 ![image](https://github.com/user-attachments/assets/448be64d-07fb-4248-a821-073696cd17b6)
-- np.linspace(): Genera una secuencia de números igualmente espaciados entre un valor mínimo y máximo. En este caso, genera 100 valores que cubren el rango de amplitudes de la señal para evaluar la campana de Gauss.
-- norm.pdf(): Calcula la función de densidad de probabilidad (PDF) de una distribución normal ya que esta función toma como entrada el rango de valores (de x), y la media y desviación estándar de los datos. Devuelve los valores correspondientes a la altura de la campana en esos puntos.
-- plt.plot(): Dibuja la campana de Gauss sobre el gráfico, usando los valores de x y pdf calculados previamente. Esta función conecta los puntos con una curva continua.
-  
+- `np.linspace():` Genera una secuencia de números igualmente espaciados entre un valor mínimo y máximo. En este caso, genera 100 valores que cubren el rango de amplitudes de la señal para evaluar la campana de Gauss.
+- `norm.pdf():` Calcula la función de densidad de probabilidad (PDF) de una distribución normal ya que esta función toma como entrada el rango de valores (de x), y la media y desviación estándar de los datos. Devuelve los valores correspondientes a la altura de la campana en esos puntos.
+- `plt.plot():` Dibuja la campana de Gauss sobre el gráfico, usando los valores de x y pdf calculados previamente. Esta función conecta los puntos con una curva continua.
+
+11 
+    ``` python
+    def calcular_snr(original, ruidosa):
+    potencia_original = np.mean(original ** 2)
+    potencia_ruido = np.mean((original - ruidosa) ** 2)
+    return 10 * np.log10(potencia_original / potencia_ruido)
+    ```
+Paso 11: Cálculo de la Relación Señal-Ruido (SNR)
+Descripción:
+Este paso calcula la Relación Señal-Ruido (SNR), que mide la calidad de la señal al comparar la potencia de la señal útil con la potencia del ruido añadido. Un SNR más alto indica que la señal es más clara en comparación con el ruido.
+
+Función utilizada:
+
+np.mean():Calcula el valor promedio de un arreglo. Se usa aquí para calcular la potencia de la señal y el ruido, que es el promedio del cuadrado de los valores.
+10 * np.log10():Esta fórmula convierte la relación de potencias en decibelios (dB), lo cual es una escala logarítmica común para medir el SNR.
+
+En esta sección del código se añade el ruido solicitado a la señal
+
+a) Ruido Gaussiano
+
+``` python
+ruido_gaussiano = np.random.normal(0, 5, len(signal))
+senal_gaussiana = signal + ruido_gaussiano
+snr_gaussiano = calcular_snr(signal, senal_gaussiana)
+print(f"SNR con ruido gaussiano: {snr_gaussiano} dB")
+```
+
+b) Ruido de Impulso
+
+``` python
+ruido_impulso = np.random.choice([0, 50, -50], size=len(signal), p=[0.95, 0.025, 0.025])
+senal_impulso = signal + ruido_impulso
+snr_impulso = calcular_snr(signal, senal_impulso)
+print(f"SNR con ruido de impulso: {snr_impulso} dB")
+```
+
+c) Ruido de artefacto
+
+``` python
+ruido_artefacto = 20 * np.sign(np.sin(2 * np.pi * 1 * time))
+senal_artefacto = signal + ruido_artefacto
+snr_artefacto = calcular_snr(signal, senal_artefacto)
+print(f"SNR con ruido de artefacto: {snr_artefacto} dB")
+```
+- np.random.normal():Genera números aleatorios con distribución normal. Se usa para crear el ruido gaussiano, con una media de 0 y una desviación estándar de 5.
+- np.random.choice():Selecciona valores aleatorios de un conjunto dado, en este caso, para simular el ruido de impulso. Elige entre 0, +50 y -50 mV con probabilidades específicas.
+- np.sign(np.sin()):Crea una onda cuadrada a partir de la función seno, que se usa para simular el ruido de artefacto. La función np.sign() convierte los valores del seno en 1 o -1.
+
+Aquí se puede evidenciar las señales contaminadas con los tres tipos ruidos diferentes
+
+``` python
+fig, axs = plt.subplots(3, 1, figsize=(10, 8))
+axs[0].plot(time, senal_gaussiana, label="Ruido Gaussiano", color='r')
+axs[1].plot(time, senal_impulso, label="Ruido de Impulso", color='g')
+axs[2].plot(time, senal_artefacto, label="Ruido de Artefacto", color='purple')
+plt.tight_layout()
+plt.show()
+```
+  ![image](https://github.com/user-attachments/assets/c24cb84e-b35c-488a-a5f8-e8cff499bd09)
+  ![image](https://github.com/user-attachments/assets/c8e8fced-9b45-46b3-85f2-de3e8dde04c6)
+  ![image](https://github.com/user-attachments/assets/53bc4814-f939-4fd5-b391-49d037b303ca)
+
+- plt.subplots(): Crea múltiples subgráficos (subplots) dentro de una misma figura. En este caso, se crean tres gráficos para mostrar las señales con ruido gaussiano, ruido de impulso y ruido de artefacto en diferentes colores.
+
+- plt.tight_layout():Ajusta el espaciado entre los gráficos para que no se solapen.
 
  
 
