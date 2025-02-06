@@ -1,5 +1,5 @@
 # LABORATORIO 1
-Como primer paso para la realización de la guía, descargamos desde PhysioNet una señal de EMG, obteniendo los archivos en formato `.dat` y `.hea`. Posteriormente, utilizamos Python para calcular lo solicitado y generar las gráficas correspondientes, empleando el compilador de Google Colab.  
+Para comenzar con la elaboración de la guía, descargamos una señal de EMG desde PhysioNet. Elegimos la señal correspondiente a un hombre de 57 años con miopatía, originada por antecedentes de polimiositis crónica, que fue tratada de manera efectiva con esteroides y metotrexato a dosis bajas. Los datos fueron registrados a 50 KHz y luego remuestreados a 4 KHz. Durante el proceso de registro, se emplearon dos filtros analógicos: un filtro de paso alto de 20 Hz y un filtro de paso bajo de 5 KHz, despues de esto se descargaron los archivos en formato `.dat` y `.hea`. Posteriormente, utilizamos Python, a través de Google Colab, para realizar los cálculos solicitados y generar las gráficas correspondientes.
 
 En este entorno, redactamos el código necesario para visualizar los datos estadísticos, siguiendo las indicaciones de la guía. Se requería que la representación de los datos se realizara de dos maneras diferentes: primero, implementando las fórmulas desde cero, y luego, utilizando las funciones predefinidas de Python.  
 
