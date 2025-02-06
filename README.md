@@ -14,4 +14,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import norm  # Para la función de distribución normal
 from google.colab import drive
-Lo primero es instalar la librería `wfdb` utilizando el siguiente comando !pip install wfdb, esta librería es fundamental, ya que permite leer y procesar archivos de señales fisiológicas, como los obtenidos de PhysioNet.
+```
+Lo primero es instalar la librería `wfdb` utilizando el siguiente comando:  
+
+```python
+!pip install wfdb
+```
+Esta librería es fundamental, ya que permite leer y procesar archivos de señales fisiológicas, como los obtenidos de PhysioNet.  
+
+Luego, importamos las siguientes librerías necesarias para el análisis y procesamiento de los datos:  
+
+- `import os`: Permite manejar archivos del sistema.  
+- `import numpy as np`: Esencial para realizar los cálculos matemáticos requeridos.  
+- `import matplotlib.pyplot as plt`: Se utiliza para la generación de gráficos.  
+- `from scipy.stats import norm`: Facilita el cálculo y representación de la campana de Gauss.  
+- `from google.colab import drive`: Se emplea para conectar Google Drive con Google Colab, ya que nuestros archivos habían sido subidos previamente a Drive.
+
