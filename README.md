@@ -6,7 +6,7 @@ En este entorno, redactamos el código necesario para visualizar los datos estad
 Con esta base, procedimos a calcular los siguientes estadísticos de la señal: media, desviación estándar, coeficiente de variación, histogramas y función de probabilidad. Para realizar estos cálculos, desarrollamos la programación correspondiente en Python, la cual explicaremos a continuación.
 # EXPLICACION DEL CODIGO USADO 
 Lo primero que debemos hacer es importar las librerías necesarias, ya que estas son fundamentales para el correcto funcionamiento de nuestro código.
-'''python
+```python
 !pip install wfdb
 import wfdb
 import os
@@ -14,3 +14,4 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import norm  # Para la función de distribución normal
 from google.colab import drive
+Lo primero es instalar la librería `wfdb` utilizando el siguiente comando !pip install wfdb, esta librería es fundamental, ya que permite leer y procesar archivos de señales fisiológicas, como los obtenidos de PhysioNet.
